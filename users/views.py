@@ -102,9 +102,14 @@ def update_orders(request,id,upd_order_id):
     context={
         "form":form
     }
-    if form.is_valid():
+    if request.method == "POST":
+        form.instance.order_id = coo.order_id
+        form.instance.prod_code = coo.prod_code
+        form.instance.user = request.user.username
         form.save()
-        return redirect("food:detail",item_id =id)
+        return redirect("food:detail",item_id=id)
+
+        
     
     return render(request,"users/orders_upd.html",context)
 
