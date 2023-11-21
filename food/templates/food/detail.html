@@ -223,7 +223,7 @@
 
                     <div class="col-md-2 text-left">
                         {% if obj.username == user.username %}
-                        <a href="#" class="btn btn-warning btn-sm">
+                        <a href="{% url 'users:upd_crf' item.id obj.id %}" class="btn btn-warning btn-sm">
                             Edit
                         </a>
                         {% endif %}
@@ -231,7 +231,7 @@
 
                     <div class="col-md-2 text-left">
                         {% if obj.username == user.username  %}
-                        <a href="#" class="btn btn-primary btn-sm">
+                        <a href="{% url 'users:del_crf' item.id obj.id %}" class="btn btn-primary btn-sm">
                             Delete
                         </a>
                         {% endif %}

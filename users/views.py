@@ -4,7 +4,7 @@ from users.forms import RegisterForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
-from users.models import CusOrders
+from users.models import CusOrders,CusRatingFeedback
 from users.forms import CusOrdersUpd,CusRatFeedForm
 
 # Create your views here.
@@ -130,5 +130,29 @@ def  CusRatFeed(request, it_id,pc):
 
     return render(request,"users/item-form.html", context)
 
+def update_crf(request,detail_id,crf_id):
+    crfo = CusRatingFeedback.objects.get(pk=crf_id)
+    form = CusRatFeedForm(request.POST or None, instance=crfo)
+
+    context={
+        "form":form
+    }
+    if form.is_valid():
+        form.save()
+        return redirect("food:detail",detail_id)
+    
+    return render(request,"users/crf_upd.html", context)
+
+def delete_crf(request,detail_id,crf_id):
+    form = CusRatingFeedback.objects.get(pk=crf_id)
+
+    context={
+        "form":form
+    }
+    if request.method == "POST":
+        form.delete()
+        return redirect("food:detail",detail_id)
+    
+    return render(request,"users/crf_del.html", context)
 
    

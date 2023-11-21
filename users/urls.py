@@ -12,4 +12,10 @@ urlpatterns = [
 
      # customer rating-feedback 
      path("crf/<int:it_id>/<int:pc>/",views.CusRatFeed,name="CusRatFeed"),
+
+     # updating customer ratings and feedback
+     path("crf_upd/<int:detail_id>/<int:crf_id>/",views.update_crf,name="upd_crf"),
+
+     # delete customer ratings and feedback
+     path("crf_delete/<int:detail_id>/<int:crf_id>/",views.delete_crf,name="del_crf"),
 ]

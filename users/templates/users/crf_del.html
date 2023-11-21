@@ -1,0 +1,9 @@
+{% extends "food/base.html"  %}
+
+{% block body %}
+<form method="POST">
+    {%  csrf_token %}
+    <h1>Are your sure your want to delete</h1>
+    <button type="submit">Delete</button>
+</form>
+{% endblock %} 
