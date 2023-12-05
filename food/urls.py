@@ -29,5 +29,6 @@ urlpatterns = [
     # function based delete_item view
     path("delete/<int:id>/",views.delete_item,name="delete_item"),
 
-
+    # navbar form
+    path("navform/",views.NavForm, name="navform")
 ]
